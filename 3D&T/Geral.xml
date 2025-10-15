@@ -82,7 +82,7 @@
 					<Attribute atr="Arm" atrN="Armadura" num="4"/>
 					<Attribute atr="PdF" atrN="Poder de Fogo" num="5"/>
 				</layout>
-				<button g="col" g-width="1" g-min-height="125" name="AtrBut" text=">>" margins="{top=25}" onClick="ShowPopUp('popAttribute', self.AtrBut)" hint="Detalhes" textTrimming="none"/>
+				<button g="col" g-width="1" g-min-height="125" name="AtrBut" text="🔍" margins="{top=25}" onClick="ShowPopUp('popAttribute', self.AtrBut)" hint="Detalhes" textTrimming="none"/>
 			</rectangle>
 <!--		</layout>-->
 
@@ -109,12 +109,12 @@
 				</dataLink>
 
 				<!-- Força de Ataque (FA) -->
-				<TitleButtonLabel2Edit text="Força de Ataque (Força)" field1="forcaDeAtaqueF" field2="efetModFor" field3="iniVariado" onClick="basicRoll('Teste de Força de Ataque','forcaDeAtaqueF')"/>
+				<TitleButtonLabel2Edit text="Força de Ataque (FOR)" field1="forcaDeAtaqueF" field2="efetModFor" field3="forVariado" onClick="basicRoll('Teste de Força de Ataque','forcaDeAtaqueF')"/>
 
-				<dataLink fields="{'efetModFor', 'iniVariado'}">
+				<dataLink fields="{'efetModFor', 'forVariado'}">
 					<event name="onUserChange">
 						if sheet~= nil then
-						local mod = (tonumber(sheet.efetModHab) or 0) + (tonumber(sheet.efetModFor) or 0) + (tonumber(sheet.fafVariado) or 0)
+						local mod = (tonumber(sheet.efetModHab) or 0) + (tonumber(sheet.efetModFor) or 0) + (tonumber(sheet.forVariado) or 0)
 						if (mod >= 0) then
 						mod = "+" .. mod
 						end
@@ -124,9 +124,9 @@
 				</dataLink>
 
 				<!-- Força de Ataque (FA) -->
-				<TitleButtonLabel2Edit text="Força de Ataque (Poder de Fogo)" field1="forcaDeAtaquePdF" field2="efetModPdF" field3="iniVariado" onClick="basicRoll('Teste de Força de Ataque','forcaDeAtaquePdF')"/>
+				<TitleButtonLabel2Edit text="Força de Ataque (PDF)" field1="forcaDeAtaquePdF" field2="efetModPdF" field3="pdfVariado" onClick="basicRoll('Teste de Força de Ataque','forcaDeAtaquePdF')"/>
 
-				<dataLink fields="{'efetModPdF', 'iniVariado'}">
+				<dataLink fields="{'efetModPdF', 'pdfVariado'}">
 					<event name="onUserChange">
 						if sheet~= nil then
 						local mod = (tonumber(sheet.efetModHab) or 0) + (tonumber(sheet.efetModPdF) or 0) + (tonumber(sheet.pdfVariado) or 0)

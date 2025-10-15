@@ -45,8 +45,9 @@
         		<label g="col" g-width="12" height="25" text="Desenvolvedor: Kaique (Shiv)" horzTextAlign="center"/>
 				<label g="col" g-width="12" height="25" text="Veja meus outros projetos:" horzTextAlign="center"/>
 				<button g="col" g-width="12" height="25" text="VitalHub" onClick="GUI.openInBrowser('https://www.vitalhub.app.br/')"/>
-				<button g="col" g-width="12" height="25" text="Copa Magé" onClick="GUI.openInBrowser('https://copamage.com.br/')"/>
 				<button g="col" g-width="12" height="25" text="Siga o Instagram!" onClick="GUI.openInBrowser('https://www.instagram.com/vitalhub.app/')"/>
+				<button g="col" g-width="12" height="25" text="Copa Magé" onClick="GUI.openInBrowser('https://copamage.com.br/')"/>
+				<button g="col" g-width="12" height="25" text="Siga o Instagram!" onClick="GUI.openInBrowser('https://www.instagram.com/copamagejjofc/')"/>
 				<label g="col" g-width="12" height="25" text="Ficha feita para a mesa: " horzTextAlign="center"/>
 				<label g="col" g-width="12" height="25" text="The Boys" horzTextAlign="center"/>
         	</rectangle>
@@ -169,13 +170,16 @@
         	<rectangle g="col" g-width="12" g-min-height="160" g-auto-height="true" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-cnt-line-spacing="5">
 				<label g="col" g-width="12" height="25" horzTextAlign="center" text="SUA VERSÃO:" field="versionInstalled"/>
 				<label g="col" g-width="12" height="25" horzTextAlign="center" text="VERSÃO ATUAL:" field="versionDownloaded"/>
-				<checkBox g="col" g-width="12" height="25" field="noUpdate" text="Não pedir para atualizar."/>
 
-				<button g="col" g-width="4" height="25" textTrimming="none" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/KaiqueSousaFarias/Ficha-3DeT-VitalHub/blob/master/output/3D%26T-VitalHub.rpk?raw=true')"/>
-				<button g="col" g-width="4" height="25" textTrimming="none" text="Livros" onClick="GUI.openInBrowser('https://github.com/KaiqueSousaFarias/Ficha-3DeT-VitalHub/blob/master/Livros')" />
+				<button g="col" g-width="12" height="25" textTrimming="none" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/KaiqueSousaFarias/Ficha-3DeT-VitalHub/blob/master/output/3D%26T-VitalHub.rpk?raw=true')"/>
+				<checkBox g="col" g-width="12" height="25" field="noUpdate" text="Não pedir para atualizar." horzTextAlign="center"/>
 
-				<label g="col" g-width="6" height="25" textTrimming="none" text="CONHEÇA A MESA:" fontSize="11" horzTextAlign="center"/>
+
+				<label g="col" g-width="6" height="25" textTrimming="none" text="CONHEÇA A MESA:" horzTextAlign="center"/>
 				<button g="col" g-width="6" height="25" textTrimming="none" text="The Boys" onClick="GUI.openInBrowser('https://vtt.firecast.app/artifacts/rooms/254752')" />
+
+				<label g="col" g-width="6" height="25" textTrimming="none" text="LIVROS 3D&amp;T:" horzTextAlign="center"/>
+				<button g="col" g-width="6" height="25" textTrimming="none" text="Livros" onClick="GUI.openInBrowser('https://github.com/KaiqueSousaFarias/Ficha-3DeT-VitalHub/tree/master/__Livros')" />
 
 				<button g="col" g-width="6" height="25" textTrimming="none" text="Exportar Ficha" >
 					<event name="onClick">

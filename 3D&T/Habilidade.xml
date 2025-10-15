@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmHabilidade" align="client">
+	<scrollBox align="client">
+		<flowLayout align="top" autoHeight="true" maxColumns="3" horzAlign="center" orientation="vertical" avoidScale="true">
+			<ListaFlexivel nome="VANTAGEM ÚNICA" rclName="campoVantagemUnica" rclField="campoVantagemUnica" templateForm="frmHabilidadeItem"/>
+			<ListaFlexivel nome="VANTAGENS" rclName="campoDasVantagens" rclField="campoDasVantagens" templateForm="frmHabilidadeItem"/>
+			<ListaFlexivel nome="PODERES" rclName="campoDosPoderes" rclField="campoDosPoderes" templateForm="frmHabilidadeItem"/>
+			<ListaFlexivel nome="MAGIAS" rclName="campoDeMagias" rclField="campoDeMagias" templateForm="frmHabilidadeItem"/>
+			<ListaFlexivel nome="DESVANTAGENS " rclName="campoDasDeesvantagens" rclField="campoDasDeesvantagens" templateForm="frmHabilidadeItem"/>
+			<ListaFlexivel nome="KIT" rclName="campoDosKit" rclField="campoDosKit" templateForm="frmHabilidadeItem"/>
+			<ListaFlexivel nome="PERÍCIAS " rclName="campoDasPericias" rclField="campoDasPericias" templateForm="frmHabilidadeItem"/>
+			<ListaFlexivel nome="OUTROS" rclName="campoDeOutros" rclField="campoDeOutros" templateForm="frmHabilidadeItem"/>
+		</flowLayout>
+	</scrollBox>
+</form>

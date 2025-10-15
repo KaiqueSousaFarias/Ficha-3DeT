@@ -161,11 +161,11 @@
 
 	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
-			<habilidadeSmallCenter text="Nível" field="nivelHabilidade"/>
-			<habilidadeLarge text="Obtido" field="obtencaoHabilidade"/>
-			<habilidadeSmallCenter text="Página" field="paginaHabilidade"/>
+			<habilidadeSmallCenter text="Pontos" field="pontosHabilidade"/>
 			<habilidadeLarge text="Livro" field="livroHabilidade"/>
-			<dataLink field="nivelHabilidade">
+			<habilidadeSmallCenter text="Custo" field="custoHabilidade"/>
+			<habilidadeLarge text="Rolagem" field="rolagemHabilidade"/>
+			<dataLink field="pontosHabilidade">
 				<event name="onUserChange">
 					local rcl = self:findControlByName("rclListaDosTalentos");
 					if rcl~= nil then
@@ -183,7 +183,23 @@
 			</dataLink>
 		</flowLayout>
 		<textEditor align="client" field="descricao"/>
+		<button align="top" height="25" text="Exibir">
+			<event name="onClick">
+				local txt = "\n";
+				local node = self.popHabilidade.node;
+				if (node.nomeHabilidade ~= nil) then txt = txt .. "Nome: " .. node.nomeHabilidade .. "\n" end;
+				if (node.pontosHabilidade ~= nil) then txt = txt .. "Pontos: " .. node.pontosHabilidade .. "\n" end;
+				if (node.custoHabilidade ~= nil) then txt = txt .. "Custo: " .. node.custoHabilidade .. "\n" end;
+				if (node.descricao ~= nil) then txt = txt .. "Descrição: " .. node.descricao end;
+
+				local mesa = Firecast.getMesaDe(node);
+				if mesa ~= nil then
+				mesa.activeChat:enviarMensagem(txt);
+				end;
+			</event>
+		</button>
 	</popup>
+
 	
 	<popup name="BarPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
 		<rectangle align="client" color="white" xradius="5" yradius="5">

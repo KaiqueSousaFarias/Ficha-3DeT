@@ -63,7 +63,7 @@
                 mesa.activeChat:escrever("String nula")
             end
         end
-        ]]> 
+        ]]>
     </script>
 
     <import file="Templates.xml"/>
@@ -72,6 +72,9 @@
     <tabControl align="client" g-cnt-gutter="5">
         <tab title="Geral">
             <import file="Geral.xml"/>
+        </tab>
+        <tab title="Habilidades">
+            <import file="Habilidade.xml"/>
         </tab>
         <tab title="Descrição">
             <import file="Descricao.xml"/>
