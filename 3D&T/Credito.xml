@@ -171,7 +171,7 @@
 				<label g="col" g-width="12" height="25" horzTextAlign="center" text="SUA VERSÃO:" field="versionInstalled"/>
 				<label g="col" g-width="12" height="25" horzTextAlign="center" text="VERSÃO ATUAL:" field="versionDownloaded"/>
 
-				<button g="col" g-width="12" height="25" textTrimming="none" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/KaiqueSousaFarias/Ficha-3DeT-VitalHub/blob/master/output/3D%26T-VitalHub.rpk?raw=true')"/>
+				<button g="col" g-width="12" height="25" textTrimming="none" text="Atualizar" onClick="GUI.openInBrowser('https://github.com/KaiqueSousaFarias/Ficha-3DeT/blob/master/output/3D%26T-VitalHub.rpk?raw=true')"/>
 				<checkBox g="col" g-width="12" height="25" field="noUpdate" text="Não pedir para atualizar." horzTextAlign="center"/>
 
 
@@ -179,7 +179,7 @@
 				<button g="col" g-width="6" height="25" textTrimming="none" text="The Boys" onClick="GUI.openInBrowser('https://vtt.firecast.app/artifacts/rooms/254752')" />
 
 				<label g="col" g-width="6" height="25" textTrimming="none" text="LIVROS 3D&amp;T:" horzTextAlign="center"/>
-				<button g="col" g-width="6" height="25" textTrimming="none" text="Livros" onClick="GUI.openInBrowser('https://github.com/KaiqueSousaFarias/Ficha-3DeT-VitalHub/tree/master/__Livros')" />
+				<button g="col" g-width="6" height="25" textTrimming="none" text="Livros" onClick="GUI.openInBrowser('https://github.com/KaiqueSousaFarias/Ficha-3DeT/tree/master/__Livros')" />
 
 				<button g="col" g-width="6" height="25" textTrimming="none" text="Exportar Ficha" >
 					<event name="onClick">
