@@ -103,7 +103,7 @@
 
                 if sheet.noUpdate==true then return end
                 if myself~= nil and isNewVersion(myself.version, info.version) then
-                    Dialogs.choose("Há uma nova versão (".. info.version .. ") da Ficha RPG meister. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
+                    Dialogs.choose("Há uma nova versão (".. info.version .. ") da Ficha 3D&amp;T. Deseja instalar?",{"Sim", "Não", "Não perguntar novamente."},
                         function(selected, selectedIndex, selectedText)
                             if selected and selectedIndex == 1 then
                                 GUI.openInBrowser('https://github.com/KaiqueSousaFarias/Ficha-3DeT/blob/master/output/3D%26T-VitalHub.rpk?raw=true')
