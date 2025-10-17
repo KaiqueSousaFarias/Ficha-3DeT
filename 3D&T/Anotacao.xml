@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form name="Anotacao" align="client" g-cnt-line-spacing="5">
-	<richEdit g="col" g-width="12" g-vert-tile="true" field="background" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
+	<richEdit g="col" g-width="12" g-vert-tile="true" field="anotacao" backgroundColor="#333333" defaultFontSize="12" defaultFontColor="white"/>
 </form>
