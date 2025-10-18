@@ -3,11 +3,8 @@
 	<script>
         <![CDATA[
 
-            local function basicRoll(text, var, nvNeg)
+            local function basicRoll(text, var)
 	        	local mod = tonumber(sheet[var]) or 0
-                if nvNeg then
-                    mod = mod - math.abs(tonumber(sheet.nvNeg) or 0)
-                end
 				local rolagem = Firecast.interpretarRolagem("1d6+" .. mod)
 				if mod < 0 then
 					rolagem = Firecast.interpretarRolagem("1d6" .. mod)
@@ -68,7 +65,6 @@
 		</rectangle>
 
 		<!-- Details -->
-<!--		<layout g="col" g-width="12" g-width-lg="3" g-min-height="415" g-cnt-line-spacing="5">-->
 			<rectangle g="col" g-width="12" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="185">
 				<label g="col" g-width="12" text="CARACTERÍSTICAS" horzTextAlign="center" height="25"/>
 
@@ -84,12 +80,9 @@
 				</layout>
 				<button g="col" g-width="1" g-min-height="125" name="AtrBut" text="🔍" margins="{top=25}" onClick="ShowPopUp('popAttribute', self.AtrBut)" hint="Detalhes" textTrimming="none"/>
 			</rectangle>
-<!--		</layout>-->
 
-<!--		<layout g="col" g-width="12" g-width-lg="3" g-min-height="415" g-cnt-line-spacing="5">-->
 			<rectangle g="col" g-width="12" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="185">
 				<label g="col" g-width="12" text="COMBATE" horzTextAlign="center" height="25"/>
-				<!-- Valor Total-->
 				<label g="col" g-width="4" g-offset="6" text="Total" horzTextAlign="center" height="25"/>
 				<label g="col" g-width="2" text="Adicional" horzTextAlign="center" height="25"/>
 
@@ -98,6 +91,7 @@
 
 				<dataLink fields="{'efetModHab', 'iniVariado'}">
 					<event name="onUserChange">
+						local mod = 0
 						if sheet~= nil then
 						local mod = (tonumber(sheet.efetModHab) or 0) + (tonumber(sheet.iniVariado) or 0)
 						if (mod >= 0) then
@@ -111,8 +105,9 @@
 				<!-- Força de Ataque (FA) -->
 				<TitleButtonLabel2Edit text="Força de Ataque (FOR)" field1="forcaDeAtaqueF" field2="efetModFor" field3="forVariado" onClick="basicRoll('Teste de Força de Ataque','forcaDeAtaqueF')"/>
 
-				<dataLink fields="{'efetModFor', 'forVariado'}">
+				<dataLink fields="{'efetModFor', 'forVariado', 'efetModHab'}">
 					<event name="onUserChange">
+						local mod = 0
 						if sheet~= nil then
 						local mod = (tonumber(sheet.efetModHab) or 0) + (tonumber(sheet.efetModFor) or 0) + (tonumber(sheet.forVariado) or 0)
 						if (mod >= 0) then
@@ -126,8 +121,9 @@
 				<!-- Força de Ataque (FA) -->
 				<TitleButtonLabel2Edit text="Força de Ataque (PDF)" field1="forcaDeAtaquePdF" field2="efetModPdF" field3="pdfVariado" onClick="basicRoll('Teste de Força de Ataque','forcaDeAtaquePdF')"/>
 
-				<dataLink fields="{'efetModPdF', 'pdfVariado'}">
+				<dataLink fields="{'efetModPdF', 'pdfVariado', 'efetModHab'}">
 					<event name="onUserChange">
+						local mod = 0
 						if sheet~= nil then
 						local mod = (tonumber(sheet.efetModHab) or 0) + (tonumber(sheet.efetModPdF) or 0) + (tonumber(sheet.pdfVariado) or 0)
 						if (mod >= 0) then
@@ -142,6 +138,7 @@
 				<TitleButtonLabel3Edit text="Esquiva" field1="esquiva" field2="efetModHab" field3="esqVariado" onClick="basicRoll2('Teste de Esquiva','esquiva')"/>
 				<dataLink fields="{'efetModHab', 'esqVariado'}">
 					<event name="onUserChange">
+						local mod = 0
 						if sheet~= nil then
 						local mod = (tonumber(sheet.efetModHab) or 0) + (tonumber(sheet.esqVariado) or 0)
 						if (mod >= 0) then
@@ -156,6 +153,7 @@
 				<TitleButtonLabel2Edit text="Força de Defesa (FD)" field1="forcaDefesa" field2="efetModArm" field3="fdVariado" onClick="basicRoll('Teste de Força de Defesa','forcaDefesa')"/>
 				<dataLink fields="{'efetModArm', 'fdVariado'}">
 					<event name="onUserChange">
+						local mod = 0
 						if sheet~= nil then
 						local mod = (tonumber(sheet.efetModArm) or 0) + (tonumber(sheet.efetModHab) or 0) + (tonumber(sheet.fdVariado) or 0)
 						if (mod >= 0) then
@@ -167,9 +165,7 @@
 				</dataLink>
 
 			</rectangle>
-<!--		</layout>-->
 
-<!--		<layout g="col" g-width="6" g-width-lg="3" g-min-height="415" g-cnt-line-spacing="5">-->
 			<rectangle g="col" g-width="12" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="185">
 				<label g="col" g-width="12" text="DESLOCAMENTOS" horzTextAlign="center" height="25"/>
 
@@ -182,8 +178,6 @@
 				<Speed text="ESCALAR" mode="Escalar"/>
 				<Speed text="ESCAVAR" mode="Escavar"/>
 			</rectangle>
-<!--		</layout>-->
-
 
 		<rectangle g="col" g-width="6" g-width-lg="3" color="black" strokeColor="white" strokeSize="1" padding="{left=5,right=5,top=5,bottom=5}" g-min-height="415">
 			<label horzTextAlign="center" align="client"/>
