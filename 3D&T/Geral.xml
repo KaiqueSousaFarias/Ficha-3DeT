@@ -20,8 +20,45 @@
 					rolagem = Firecast.interpretarRolagem("1d6")
 				end
 				local mesa = Firecast.getMesaDe(sheet)
-				mesa.activeChat:rolarDados(rolagem, text .. " de " .. (sheet.nome or "Nome") .. " (Modificador: " .. mod .. ")")
+				mesa.activeChat:rolarDados(rolagem, text .. " de " .. (sheet.nome or "Nome") .. " (Esquiva: " .. mod .. ")")
 	        end
+
+	        local function basicRoll3(text, var)
+			local mod = tonumber(sheet[var]) or 0
+
+			Dialogs.inputQuery("Quantidade de dados", "Quantos dados 1d6?", "1", function(qtdStr)
+				local qtd = tonumber(qtdStr) or 1
+				if qtd < 1 then qtd = 1 end
+
+				local mesa = Firecast.getMesaDe(sheet)
+				for i = 1, qtd do
+					local diceExpr = "1d6"
+					if mod > 0 then
+						diceExpr = diceExpr .. "+" .. mod
+					elseif mod < 0 then
+						diceExpr = diceExpr .. tostring(mod)
+					end
+
+					local rolagem = Firecast.interpretarRolagem(diceExpr)
+					mesa.activeChat:rolarDados(rolagem, "N°".. i .. " " .. text .. " de " .. (sheet.nome or "Nome") .. " (" .. diceExpr .. ")")
+				end
+			end)
+		end
+
+		local function basicRoll4(text, var)
+			local mod = tonumber(sheet[var]) or 0
+
+			Dialogs.inputQuery("Quantidade de dados", "Quantos dados 1d6?", "1", function(qtdStr)
+				local qtd = tonumber(qtdStr) or 1
+				if qtd < 1 then qtd = 1 end
+
+				local mesa = Firecast.getMesaDe(sheet)
+				for i = 1, qtd do
+					local rolagem = Firecast.interpretarRolagem("1d6")
+					mesa.activeChat:rolarDados(rolagem, "N°".. i .. " " .. text .. " de " .. (sheet.nome or "Nome") .. " (Esquiva: " .. mod .. ")")
+				end
+			end)
+		end
 
 	        local function ShowPopUp(popup, location, position)
 				local pop = self:findControlByName(popup)
@@ -33,8 +70,6 @@
 					showMessage("Ops, bug.. nao encontrei o popup " .. popup .. " para exibir")
 				end
 	        end
-
-
         ]]>
     </script>
 
@@ -71,7 +106,6 @@
 				<layout g="col" g-width="11" g-min-height="175">
 					<label g="col" g-width="4" g-offset="4" text="Real" horzTextAlign="center" height="25"/>
 					<label g="col" g-width="4" text="Efetivo" horzTextAlign="center" height="25"/>
-
 					<Attribute atr="For" atrN="Força" num="1"/>
 					<Attribute atr="Hab" atrN="Habilidade" num="2"/>
 					<Attribute atr="Res" atrN="Resistência" num="3"/>
@@ -103,7 +137,7 @@
 				</dataLink>
 
 				<!-- Força de Ataque (FA) -->
-				<TitleButtonLabel2Edit text="Força de Ataque (FOR)" field1="forcaDeAtaqueF" field2="efetModFor" field3="forVariado" onClick="basicRoll('Teste de Força de Ataque','forcaDeAtaqueF')"/>
+				<TitleButtonLabel2Edit text="Força de Ataque (FOR)" field1="forcaDeAtaqueF" field2="efetModFor" field3="forVariado" onClick="basicRoll3('Teste de Força de Ataque (FOR)','forcaDeAtaqueF')"/>
 
 				<dataLink fields="{'efetModFor', 'forVariado', 'efetModHab'}">
 					<event name="onUserChange">
@@ -119,7 +153,7 @@
 				</dataLink>
 
 				<!-- Força de Ataque (FA) -->
-				<TitleButtonLabel2Edit text="Força de Ataque (PDF)" field1="forcaDeAtaquePdF" field2="efetModPdF" field3="pdfVariado" onClick="basicRoll('Teste de Força de Ataque','forcaDeAtaquePdF')"/>
+				<TitleButtonLabel2Edit text="Força de Ataque (PDF)" field1="forcaDeAtaquePdF" field2="efetModPdF" field3="pdfVariado" onClick="basicRoll3('Teste de Força de Ataque','forcaDeAtaquePdF')"/>
 
 				<dataLink fields="{'efetModPdF', 'pdfVariado', 'efetModHab'}">
 					<event name="onUserChange">
@@ -135,7 +169,7 @@
 				</dataLink>
 
 				<!-- Esquiva -->
-				<TitleButtonLabel3Edit text="Esquiva" field1="esquiva" field2="efetModHab" field3="esqVariado" onClick="basicRoll2('Teste de Esquiva','esquiva')"/>
+				<TitleButtonLabel3Edit text="Esquiva" field1="esquiva" field2="efetModHab" field3="esqVariado" onClick="basicRoll4('Teste de Esquiva','esquiva')"/>
 				<dataLink fields="{'efetModHab', 'esqVariado'}">
 					<event name="onUserChange">
 						local mod = 0
@@ -150,7 +184,7 @@
 				</dataLink>
 
 				<!--  Força de Defesa (FD) -->
-				<TitleButtonLabel2Edit text="Força de Defesa (FD)" field1="forcaDefesa" field2="efetModArm" field3="fdVariado" onClick="basicRoll('Teste de Força de Defesa','forcaDefesa')"/>
+				<TitleButtonLabel2Edit text="Força de Defesa (FD)" field1="forcaDefesa" field2="efetModArm" field3="fdVariado" onClick="basicRoll3('Teste de Força de Defesa','forcaDefesa')"/>
 				<dataLink fields="{'efetModArm', 'fdVariado'}">
 					<event name="onUserChange">
 						local mod = 0

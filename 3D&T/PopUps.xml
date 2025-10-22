@@ -28,20 +28,6 @@
 		<attributeFlowEfet atr="PdF"/>
 	</popup>
 
-	<popup name="popGrapple" width="225" height="50" backOpacity="0.4" autoScopeNode="false">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="4" margins="{bottom=4}" horzAlign="center">
-			<smallTitleCenter text="BBA"/>
-			<smallTitleCenter text="Força"/>
-			<smallTitleCenter text="Tamanho"/>
-			<smallTitleCenter text="Outros"/>
-
-			<smallLabelCenter field="bba"/>
-			<smallLabelCenter field="efetModFor"/>
-			<smallFieldCenter field="agarrarTam"/>
-			<smallFieldCenter field="agarrarVar"/>
-		</flowLayout>
-	</popup>
-
 	<popup name="popResistencia" width="380" height="150" backOpacity="0.4" autoScopeNode="false">
 		<flowLayout align="top" autoHeight="true" maxControlsPerLine="11" margins="{bottom=4}" horzAlign="center">
 			<smallTitleCenter text="Base"/>
@@ -60,55 +46,6 @@
 		<dataLink field="atrTrFort" defaultValue="3"/>
 		<dataLink field="atrTrRef" defaultValue="2"/>
 		<dataLink field="atrTrVon" defaultValue="5"/>
-	</popup>
-
-	<popup name="popCA" width="600" height="210" backOpacity="0.4" autoScopeNode="false">
-		<flowLayout align="top" autoHeight="true" margins="{bottom=4}">
-			<Protection nome="Armadura" field="armaduraCa"/>
-			<flowPart minWidth="10" maxWidth="20" height="15"/>
-			<smallTitleCenter text="Penalidade"/>
-			<smallLabelCenter field="equipamentoCorpoPen"/>
-			<smallTitleCenter text="Falha"/>
-			<smallLabelCenter field="equipamentoCorpoFalha"/>
-			<flowLineBreak/>
-
-			<Protection nome="Escudo" field="escudoCa"/>
-			<flowPart minWidth="10" maxWidth="20" height="15"/>
-			<smallTitleCenter text="Penalidade"/>
-			<smallFieldCenter field="escudoPen"/>
-			<smallTitleCenter text="Falha"/>
-			<smallFieldCenter field="escudoFalha"/>
-			<flowLineBreak/>
-
-			<smallTitleCenter text="Destreza"/>
-			<smallLabelCenter field="efetModDes"/>
-			<longTextCenter field="destrezaCa2"/>
-			<flowPart minWidth="50" maxWidth="60" height="20">
-				<checkBox field="destrezaCaSurp" text="Surpresa" fontSize="10" height="20"/>
-			</flowPart>
-			<flowPart minWidth="50" maxWidth="60" height="20">
-				<checkBox field="destrezaCaToque" text="Toque" fontSize="10" height="15"/>
-			</flowPart>
-			<smallTitleCenter text="Limite"/>
-            <flowPart minWidth="10" maxWidth="10" height="15"/>
-            <smallFieldCenter field="destrezaCALimit"/>
-
-			<flowLineBreak/>
-			<Protection nome="Tamanho" field="tamanhoCa"/>
-			<flowLineBreak/>
-			<Protection nome="Natural" field="naturalCa"/>
-			<flowLineBreak/>
-			<Protection nome="Deflexao" field="deflexaoCa"/>
-			<flowLineBreak/>
-			<Protection nome="Esquiva" field="esquivaCa"/>
-			<flowLineBreak/>
-			<Protection nome="Sorte" field="sorteCa"/>
-			<flowLineBreak/>
-			<Protection nome="Outros" field="outrosCa"/>
-			<flowLineBreak/>
-			<Protection nome="Variados" field="variadosCa"/>
-			<flowLineBreak/>
-		</flowLayout>
 	</popup>
 
 	<popup name="popArma" width="300" height="400" backOpacity="0.4" autoScopeNode="false">
@@ -131,32 +68,6 @@
 			<weaponInfoFieldSmallCenter text="FALHA" field="falha" hint="Para escudos: qual a falha arcana?"/>
 		</flowLayout>
 		<textEditor align="client" field="descricao" class=""/>
-	</popup>
-
-	<popup name="popPericia" width="300" height="250" backOpacity="0.4" autoScopeNode="false">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
-			<periciaSmallCenter text="Penalidades" field="penalidesPericia"/>
-			<periciaSmallCenter text="Racial" field="racialPericia"/>
-			<periciaSmallCenter text="Sinergia" field="sinergiaPericia"/>
-			<periciaSmallCenter text="Equipamentos" field="equipamentosPericia"/>
-			<periciaSmallCenter text="Magico" field="magicoPericia"/>
-			<periciaSmallCenter text="Outros" field="outrosPericia"/>
-			<periciaSmallCenter text="Talentos" field="talentosPericia"/>
-			<periciaSmallCenter text="Classe" field="classePericia"/>
-			<periciaSmallCenter text="Condicional" field="condicionalPericia"/>
-			<periciaSmallCenter text="Competencia" field="competenciaPericia"/>
-			<periciaSmallCenter text="Intuição" field="intuicaoPericia"/>
-			<periciaSmallCenter text="Sorte" field="sortePericia"/>
-		</flowLayout>
-		<textEditor align="bottom" height="80" field="descricao"/>
-		<checkBox align="left" text="Exige Treino" field="exigeTreino"/>
-		<checkBox align="right" text="Penalidade Armadura" field="penalidadeArmadura"/>
-		<checkBox align="right" width="20" text="" field="penalidadeArmadura2"/>
-	</popup>
-	<popup name="popIdioma" width="200" height="100" backOpacity="0.4" autoScopeNode="false">
-		<checkBox align="top" text="Falar/Entender" field="conversarIdioma"/>
-		<checkBox align="top" text="Escrever/Ler" field="escritaIdioma"/>
-		<textEditor align="client" field="descricao"/>
 	</popup>
 
 	<popup name="popHabilidade" width="300" height="240" backOpacity="0.4" autoScopeNode="false">
@@ -200,7 +111,6 @@
 		</button>
 	</popup>
 
-	
 	<popup name="BarPopup" width="140" height="66" backOpacity="0" margins="{left=4, right=4, top=4, bottom=4}" autoScopeNode="false">
 		<rectangle align="client" color="white" xradius="5" yradius="5">
 			<rectangle align="client" name="PopupBarColor" color="#808080" xradius="5" yradius="5" opacity="0.9">
@@ -213,7 +123,7 @@
 							<event name="OnKeyDown">
 								local oenter = (event.keyCode == 13)
 								if oenter then
-									self.BarPopup:close();
+								self.BarPopup:close();
 								end;
 							</event>
 						</edit>
@@ -225,7 +135,7 @@
 							<event name="OnKeyDown">
 								local oenter = (event.keyCode == 13);
 								if oenter then
-									self.BarPopup:close();
+								self.BarPopup:close();
 								end;
 							</event>
 						</edit>
@@ -233,74 +143,77 @@
 				</layout>
 			</rectangle>
 		</rectangle>
-		
+
+		<event name="onNodeReady">
+			local node = self.BarPopup.scopeNode
+			if node == nil then return end
+
+			local selectedBar = node.selectedBar
+
+			node.AtributoBarrinha = node["Atributo"..selectedBar]
+			node.ValorMudadoAtualBarrinha = node["ValorMudadoAtual"..selectedBar]
+			node.ValorMudadoMaxBarrinha = node["ValorMudadoMax"..selectedBar]
+		</event>
+
 		<event name="onClose">
 			setTimeout( function()
-				if (self.BarPopup.scopeNode.ModificadorBarrinha == "igual") then
-					self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
-				elseif (self.BarPopup.scopeNode.ModificadorBarrinha == "mais") then
-					self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempAtualBarrinha or 0) + tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
-				elseif (self.BarPopup.scopeNode.ModificadorBarrinha == "menos") then
-					self.BarPopup.scopeNode.ValorTempAtualBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempAtualBarrinha or 0) - tonumber(self.BarPopup.scopeNode.ValorMudadoAtualBarrinha or 0);
-				end;
-				
-				if (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "igual") then
-					self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
-				elseif (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "mais") then
-					self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempMaxBarrinha or 0) + tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
-				elseif (self.BarPopup.scopeNode.ModificadorBarrinhaMax == "menos") then
-					self.BarPopup.scopeNode.ValorTempMaxBarrinha = tonumber(self.BarPopup.scopeNode.ValorTempMaxBarrinha or 0) - tonumber(self.BarPopup.scopeNode.ValorMudadoMaxBarrinha or 0);
-				end;
-				
-				local barrinhapc = 0
-				local barrinhapcmax = 0
-				local porcentagem = 0
-				local porcentagemmax = 0
+			local node = self.BarPopup.scopeNode
+			if node == nil then return end
 
-				barrinhapc = (self.BarPopup.scopeNode.ValorTempAtualBarrinha - (self.BarPopup.scopeNode.BarrinhaValor or 0));
-				barrinhapcmax = (self.BarPopup.scopeNode.ValorTempMaxBarrinha - (self.BarPopup.scopeNode.BarrinhaValorMax or 0));
-				self.BarPopup.scopeNode.BarrinhaValor = self.BarPopup.scopeNode.ValorTempAtualBarrinha;
-				self.BarPopup.scopeNode.BarrinhaValorMax = self.BarPopup.scopeNode.ValorTempMaxBarrinha;
-				
-				if ((barrinhapc ~= 0) or (barrinhapcmax ~= 0)) then
-					local nome = self.BarPopup.scopeNode.AtributoBarrinha or "Equipamento";
-					local personagem = sheet.nome or "nome";
-					local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
-					local valor = barrinhapc;
-					local valormax = barrinhapcmax;
-					
-					if tonumber(barrinhapc) >= 0 then
-						valor = "+" .. tostring(barrinhapc);
-					end;
-					if tonumber(barrinhapcmax) >= 0 then
-						valormax = "+" .. tostring(barrinhapcmax);
-					end;
-					
-					if tonumber(valormax) == 0 then
-						text = text .. valor;
-					else
-						text = text .. valor .. "/" .. valormax;
-					end;
-					
-					local mesaDoPersonagem = Firecast.getMesaDe(sheet);
-					if mesaDoPersonagem ~= nil then
-						   mesaDoPersonagem.activeChat:enviarMensagem(text);
-					end;
-				end;
+			local selectedBar = node.selectedBar
+
+			if (node.ModificadorBarrinha == "igual") then
+			node["ValorTempAtual"..selectedBar] = tonumber(node.ValorMudadoAtualBarrinha or 0);
+			elseif (node.ModificadorBarrinha == "mais") then
+			node["ValorTempAtual"..selectedBar] = tonumber(node["ValorTempAtual"..selectedBar] or 0) + tonumber(node.ValorMudadoAtualBarrinha or 0);
+			elseif (node.ModificadorBarrinha == "menos") then
+			node["ValorTempAtual"..selectedBar] = tonumber(node["ValorTempAtual"..selectedBar] or 0) - tonumber(node.ValorMudadoAtualBarrinha or 0);
+			end;
+
+			if (node.ModificadorBarrinhaMax == "igual") then
+			node["ValorTempMax"..selectedBar] = tonumber(node.ValorMudadoMaxBarrinha or 0);
+			elseif (node.ModificadorBarrinhaMax == "mais") then
+			node["ValorTempMax"..selectedBar] = tonumber(node["ValorTempMax"..selectedBar] or 0) + tonumber(node.ValorMudadoMaxBarrinha or 0);
+			elseif (node.ModificadorBarrinhaMax == "menos") then
+			node["ValorTempMax"..selectedBar] = tonumber(node["ValorTempMax"..selectedBar] or 0) - tonumber(node.ValorMudadoMaxBarrinha or 0);
+			end;
+
+			local barrinhapc = 0
+			local barrinhapcmax = 0
+			local porcentagem = 0
+			local porcentagemmax = 0
+
+			barrinhapc = (node["ValorTempAtual"..selectedBar] - (node[selectedBar.."Valor"] or 0));
+			barrinhapcmax = (node["ValorTempMax"..selectedBar] - (node[selectedBar.."ValorMax"] or 0));
+			node[selectedBar.."Valor"] = node["ValorTempAtual"..selectedBar];
+			node[selectedBar.."ValorMax"] = node["ValorTempMax"..selectedBar];
+
+			if ((barrinhapc ~= 0) or (barrinhapcmax ~= 0)) then
+			local nome = node.AtributoBarrinha or "Barrinha";
+			local personagem = sheet.nome or "personagem";
+			local text = "[§K2]" .. nome .. "[§K3] de [§K2]" .. personagem.. "[§K3]: ";
+			local valor = barrinhapc;
+			local valormax = barrinhapcmax;
+
+			if tonumber(barrinhapc) >= 0 then
+			valor = "+" .. tostring(barrinhapc);
+			end;
+			if tonumber(barrinhapcmax) >= 0 then
+			valormax = "+" .. tostring(barrinhapcmax);
+			end;
+
+			if tonumber(valormax) == 0 then
+			text = text .. valor;
+			else
+			text = text .. valor .. "/" .. valormax;
+			end;
+
+			local mesaDoPersonagem = Firecast.getMesaDe(sheet);
+			if mesaDoPersonagem ~= nil then
+			mesaDoPersonagem.activeChat:enviarMensagem(text);
+			end;
+			end;
 			end, 100);
 		</event>
-	</popup>
-	
-	<popup name="popItem" width="300" height="250" backOpacity="0.4" autoScopeNode="false">
-		<flowLayout align="top" autoHeight="true" maxControlsPerLine="3" margins="{bottom=4}" horzAlign="center">
-			<weaponInfoFieldSmall text="Nome" field="nome" hint=""/>
-			<weaponInfoFieldSmall text="Tipo" field="tipo" hint="Varinha? Poção? Cajado?"/>
-			<weaponInfoFieldSmall text="Rolagem" field="dados" hint="Rolagem feita ao usar o item."/>
-
-			<weaponInfoFieldSmallCenter text="NC" field="nc" hint="Nível de Conjurador"/>
-			<weaponInfoFieldSmallCenter text="CD" field="cd" hint="Classe de Dificuldade"/>
-			<itemInfoFieldSmall text="PREÇO" field="preco" hint=""/>
-		</flowLayout>
-		<textEditor align="client" field="descricao" class=""/>
 	</popup>
 </group>

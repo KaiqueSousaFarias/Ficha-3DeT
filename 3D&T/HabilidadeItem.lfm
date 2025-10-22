@@ -27,12 +27,14 @@
 
 			local texto = (sheet.nomeHabilidade or "Habilidade") .. " foi usado. ";
 
-			local mana = tonumber(sheet.custoHabilidade)
 
-			if mana ~= nil and mana > 0 then
-				sheet.custoHabilidade = mana
-				mesa.activeChat:enviarMensagem("/PM -" .. mana)
-			end;
+			local custo = tonumber(sheet.custoHabilidade) or 0
+			if custo > 0 then
+				local mesa = Firecast.getMesaDe(sheet)
+				local current = mesa.meuJogador:getBarValue(2)
+				current = current - custo
+				mesa.meuJogador:requestSetBarValue(2, current)
+			end
 
 			if sheet.rolagemHabilidade~=nil then
 				local rolagem = Firecast.interpretarRolagem(sheet.rolagemHabilidade);

@@ -76,6 +76,9 @@
         <tab title="Habilidades">
             <import file="Habilidade.xml"/>
         </tab>
+        <tab title="Equipamentos">
+            <import file="Equipamentos.xml"/>
+        </tab>
         <tab title="Descrição">
             <import file="Descricao.xml"/>
         </tab>
