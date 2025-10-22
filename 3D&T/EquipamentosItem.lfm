@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmEquipamentosItem" width="650" height="300" margins="{bottom=5}">
+    <script>
+        <![CDATA[
+		-- Desconta "delta" (padrão 1) do valor atual da barrinha indicada
+    local function useBar(fieldName, delta)
+        delta = tonumber(delta) or 1
+
+        -- Lê valores atuais
+        local atual = tonumber(sheet[fieldName .. "Valor"]) or 0
+        local max   = tonumber(sheet[fieldName .. "ValorMax"]) or atual
+
+        -- Novo valor (trava em 0 para não ficar negativo)
+        local novo = atual - delta
+        if novo < 0 then novo = 0 end
+
+        -- Aplica
+        sheet[fieldName .. "Valor"] = novo
+
+        -- Feedback no chat (opcional)
+        local mesa = Firecast.getMesaDe(sheet)
+        if mesa and mesa.activeChat then
+            local nomeHabilidade = (sheet.nomeHabilidade or sheet["Atributo" .. fieldName] or fieldName)
+            local msg = string.format("%s usado: %d ➝ %d/%d", nomeHabilidade, atual, novo, max)
+            mesa.activeChat:enviarMensagem(msg)
+        end
+    end
+	]]>
+    </script>
+    <template name="EditBar">
+        <layout align="client">
+            <edit align="left" field="Atributo$(field)"/>
+            <layout align="client" margins="{top=5,bottom=5}">
+                <imageCheckBox align="client">
+                    <progressBar
+                            align="client"
+                            colorMode="hl"
+                            height="45"
+                            margins="{top=3,bottom=3}"
+                            hitTest="true" mouseGlow="true"
+                            color="Red" name="$(field)"
+                            field="$(field)Valor" fieldMax="$(field)ValorMax">
+                        <event name="onMouseEnter">
+                            self.Cor$(field).color = "Green";
+                            self.Valores$(field).visible = true;
+                            sheet.Info$(field) = (sheet.$(field)Valor or 0) .. "/" .. (sheet.$(field)ValorMax or 0);
+                        </event>
+                        <event name="onMouseLeave">
+                            self.Valores$(field).visible = false;
+                        </event>
+                        <event name="onDblClick">
+                            sheet.$(field)ID = sheet.index;
+
+                            sheet.Modificador$(field) = "igual";
+                            sheet.Modificador$(field)Max = "igual";
+                            sheet.ValorTempAtual$(field) = sheet.$(field)Valor;
+                            sheet.ValorTempMax$(field) = sheet.$(field)ValorMax;
+                            sheet.ValorMudadoAtual$(field) = sheet.$(field)Valor;
+                            sheet.ValorMudadoMax$(field) = sheet.$(field)ValorMax;
+
+                            local rec = self:findControlByName("PopupBarColor");
+                            if rec~=nil then rec.color = "Green" end;
+
+                            local pop = self:findControlByName("BarPopup");
+                            if pop~= nil then
+                            pop.scopeNode = sheet
+                            pop.scopeNode.selectedBar = "$(field)"
+                            pop:show("top", self.$(field))
+                            pop.top = (pop.top + 29 + 10)
+                            end;
+                        </event>
+                    </progressBar>
+                </imageCheckBox>
+            </layout>
+            <button align="right" width="25" text="▶️" hint="Usar">
+                <event name="onClick">
+                    useBar("$(field)", 1);
+                </event>
+            </button>
+
+            <layout align="left" width="60" margins="{top=5,bottom=5}" visible="false" name="Valores$(field)">
+                <rectangle align="client" xradius="2" yradius="2" name="Cor$(field)" color="Green">
+                    <label align="left" fontColor="white" fontSize="10" autoSize="true" textTrimming="none"
+                           wordWrap="false" name="Info$(field)" field="Info$(field)" horzTextAlign="center" text="0/0">
+                        <event name="onResize">
+                            self.Info$(field).width = (self.Valores$(field).width - 4);
+                        </event>
+                    </label>
+                </rectangle>
+            </layout>
+
+            <dataLink field="Cor$(field)" defaultValue="Green">
+                <event name="onUserChange">
+                    self.$(field).color = "Green";
+                </event>
+            </dataLink>
+            <dataLink field="$(field)Valor">
+                <event name="onChange">
+                    if sheet.$(field)Valor==nil then return end;
+                    if sheet.$(field)Valor==0 then
+                    self.$(field).color = "Yellow";
+                    else
+                    self.$(field).color = "Green";
+                    end;
+                </event>
+            </dataLink>
+        </layout>
+    </template>
+
+
+    <rectangle align="client" color="DimGray">
+        <rectangle align="left" width="200" margins="{left=5,top=5,bottom=5,right=5}" color="black" strokeColor="white"
+                   strokeSize="1">
+            <label left="0" top="60" width="200" height="20" horzTextAlign="center"/>
+            <image align="client" field="avatar" editable="true" style="proportional"
+                   margins="{left=2, right=2, top=2, bottom=2}">
+                <event name="OnStartDrag">
+                    if drag then
+                    drag:addData("imageURL", sheet.avatar)
+                    end
+                </event>
+            </image>
+        </rectangle>
+
+        <layout align="client" margins="{top=5,bottom=5,right=5}">
+            <layout align="top" height="25">
+                <edit align="client" field="nome"/>
+
+                <button align="right" width="25" text="X" hint="Apaga a aba.">
+                    <event name="onClick">
+                        Dialogs.confirmOkCancel("Tem certeza que quer apagar esse personagem?",
+                        function (confirmado)
+                        if confirmado then
+                        NDB.deleteNode(sheet);
+                        end;
+                        end);
+                    </event>
+                </button>
+            </layout>
+            <richEdit align="client" g-vert-tile="true" field="details" backgroundColor="#333333" defaultFontSize="12"
+                      defaultFontColor="white"/>
+            <layout align="bottom" height="35">
+                <EditBar field="Barrinha1"/>
+            </layout>
+            <layout align="bottom" height="35">
+                <EditBar field="Barrinha2"/>
+            </layout>
+        </layout>
+    </rectangle>
+</form>

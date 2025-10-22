@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="Equipamentos" align="client">
+    <scrollBox align="client">
+        <layout align="top">
+            <layout align="left" width="100">
+                <button left="0" top="0" width="45" height="45" onClick="self.rclAbas:append();" hint="Adiciona nova aba. ">
+                    <image left="5" top="5" width="35" height="35" src="images/addIcon.png"/>
+                </button>
+                <button left="50" top="0" width="45" height="45" hint="Adiciona novo equipamento a aba.">
+                    <image left="5" top="5" width="35" height="35" src="images/equipamento.png"/>
+                    <event name="onClick">
+                        if self.dsbMural.node==nil then return end
+                        self.rclMural:append();
+                    </event>
+                </button>
+            </layout>
+            <layout align="client">
+                <recordList name="rclAbas" field="abas" templateForm="frm_FM_Aba" align="top" height="46" selectable="true" layout="horizontal">
+                    <event name="onCompare">
+                        local comp = ((tonumber(nodeA.index) or 0) - (tonumber(nodeB.index) or 0));
+
+                        if comp == 0 then
+                            return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+                        else
+                            return comp;
+                        end;
+                    </event>
+                    <event name="onSelect">
+                        local node = self.rclAbas.selectedNode;
+                        self.dsbMural.node = node;
+                        self.dsbMural.visible = (node ~= nil);
+                    </event>
+                    <event name="onEndEnumeration">
+                        if self.rclAbas.selectedNode == nil and sheet ~= nil then
+                            local nodes = NDB.getChildNodes(sheet.abas);
+
+                            if #nodes > 0 then
+                                self.rclAbas.selectedNode = nodes[1];
+                            end;
+                        end;
+                    </event>
+                </recordList>
+            </layout>
+        </layout>
+        <layout align="client">
+            <dataScopeBox name="dsbMural" align="client" visible="false">
+                <rectangle align="client" color="DarkGray">
+                    <scrollBox align="client">
+                        <recordList name="rclMural" field="abas" templateForm="frmEquipamentosItem" align="top" autoHeight="true" selectable="true" layout="vertical">
+                            <event name="onCompare">
+                                return Utils.compareStringPtBr(nodeA.nome, nodeB.nome);
+                            </event>
+                        </recordList>
+                    </scrollBox>
+                </rectangle>
+            </dataScopeBox>
+        </layout>
+    </scrollBox>
+</form>
