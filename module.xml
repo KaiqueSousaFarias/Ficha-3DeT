@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module sdkVersion="3.7b">
     <id>br.com.vitalhub.3DeT_SDK3</id>
-    <version>0.7</version>
+    <version>0.8</version>
     <info lang="pt-BR">
         <name>3D&amp;T</name>
         <description>Modelo de ficha de 3D&amp;T</description>

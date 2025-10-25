@@ -53,7 +53,7 @@
 	]]>
 	</script>
 
-	<edit align="left" width="30" field="pontosHabilidade" type="number" vertTextAlign="center"/>
+	<edit align="left" width="30" field="pontosHabilidade" type="float" vertTextAlign="center"/>
 	<layout align="right" width="75">
 		<layout top="5" height="15" width="45">
 			<imageCheckBox align="client">

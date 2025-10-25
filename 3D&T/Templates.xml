@@ -517,7 +517,7 @@
         <flowPart minWidth="90" maxWidth="100" height="35">
             <label align="top" class="tituloCampo" fontSize="10" text="$(text)" horzTextAlign="center" wordWrap="true"
                    textTrimming="none" autoSize="true"/>
-            <edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="number"/>
+            <edit align="client" class="" field="$(field)" horzTextAlign="center" fontSize="12" type="float"/>
         </flowPart>
     </template>
     <template name="habilidadeLarge">
